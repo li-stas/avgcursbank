@@ -5,11 +5,9 @@ import org.springframework.stereotype.Component;
 
 /**
  * считывание конфигурационных данных
- * https://www.theserverside.com/video/How-applicationproperties-simplifies-Spring-config
- *
  */
 
-@ConfigurationProperties(prefix="ini.api")
+@ConfigurationProperties(prefix = "ini.api")
 @Component
 public class SpringBootConfiguration {
     private String apikey = "######";
@@ -50,17 +48,21 @@ public class SpringBootConfiguration {
         this.timeOutForSingleRequests = timeOutForSingleRequests;
     }
 
-    public String getApikey() { return apikey; }
-    public void setApikey(String apikey) { this.apikey = apikey;  }
+    public String getApikey() {
+        return apikey;
+    }
+
+    public void setApikey(String apikey) {
+        this.apikey = apikey;
+    }
 
     @Override
     public String toString() {
-        return "SpringBootConfiguration{" +
-                "apikey='" + apikey + '\'' +
-                ", timeOutForSingleRequests=" + timeOutForSingleRequests +
-                ", apibank01='" + apibank01 + '\'' +
-                ", apibank02='" + apibank02 + '\'' +
-                ", apibank03='" + apibank03 + '\'' +
-                '}';
+        return "SpringBootConfiguration{"
+                + ", timeOutForSingleRequests=" + timeOutForSingleRequests
+                + ", apibank01='" + apibank01 + '\''
+                + ", apibank02='" + apibank02 + '\''
+                + ", apibank03='" + apibank03 + '\''
+                + '}';
     }
 }

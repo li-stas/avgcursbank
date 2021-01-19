@@ -54,7 +54,7 @@ public class ScheduledTasksCron {
     private Trades getTrade(int nId_Bank, String cUrlApiBank, SpringBootConfiguration config) {
         LocalDate dt = LocalDate.now();
         List<AO_trade> aoTrade = null;
-        aoTrade = tradeRepository.findByDateTradeIdBank( dt, nId_Bank);
+        aoTrade = tradeRepository.findByDateTradeIdBank(dt, nId_Bank);
         Trades trades = new Trades(SUCCESS_STATUS, CODE_SUCCESS);
         if (aoTrade.size() == 0) {
             trades = lookUpBankCurs.eval(nId_Bank, cUrlApiBank, config);

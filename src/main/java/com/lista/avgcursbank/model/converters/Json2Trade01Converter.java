@@ -8,7 +8,6 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -43,6 +42,8 @@ public class Json2Trade01Converter implements Converter<String, Trades> {
                 oTrade.setId_bank(1);
                 oTrade.setName_bank("MonoBank");
 
+                /*oTrade.setRateBuy(new BigDecimal( ((Number) mapTrade.get("rateBuy")).doubleValue()));
+                oTrade.setRateBuy(new BigDecimal( ((Number) mapTrade.get("rateSell")).doubleValue()));*/
                 oTrade.setRateBuy(BigDecimal.valueOf(((Number) mapTrade.get("rateBuy")).doubleValue()));
                 oTrade.setRateBuy(BigDecimal.valueOf(((Number) mapTrade.get("rateSell")).doubleValue()));
                 /*oTrade.setRateSell(BigDecimal.valueOf((Double) mapTrade.get("rateBuy")));
@@ -78,38 +79,5 @@ public class Json2Trade01Converter implements Converter<String, Trades> {
         return oTrades;
     }
 
-    /*private Map<String, Object> getStringObjectMap(String s) {
-        String cTrade;
-        cTrade = s;
-
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> mapTrade = null;
-        try {
-            mapTrade = mapper.readValue(cTrade, new TypeReference<Map<String, Object>>() {
-            });
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-        return mapTrade;
-    }*/
-
-    private  BigDecimal getBigDecimal( Object value ) {
-        BigDecimal ret = null;
-        if( value != null ) {
-            if( value instanceof BigDecimal ) {
-                ret = (BigDecimal) value;
-            } else if( value instanceof String ) {
-                ret = new BigDecimal( (String) value );
-            } else if( value instanceof BigInteger ) {
-                ret = new BigDecimal( (BigInteger) value );
-            } else if( value instanceof Number ) {
-                //ret = new BigDecimal( ((Number)value).doubleValue() );
-                ret = BigDecimal.valueOf(((Number) value).doubleValue());
-            } else {
-                throw new ClassCastException("Not possible to coerce ["+value+"] from class "+value.getClass()+" into a BigDecimal.");
-            }
-        }
-        return ret;
-    }
 }
 

@@ -30,15 +30,6 @@ public class Json2Trade03Converter implements Converter<String, Trades> {
         Trades oTrades = new Trades(); // список курсов банка
         String[] aTTrade = oTrades.cTrade2aTrade(cTrade);
 
-        /*cTrade = cTrade.replace("[","");
-        cTrade = cTrade.replace("]",",");
-        String[] aTTrade = cTrade.split("},");
-        for (int i = 0; i < aTTrade.length; i++) {
-            aTTrade[i] += "}";
-        }
-
-        Trades oTrades = new Trades(); // список курсов банка*/
-
         for (String s : aTTrade) {
 
             Map<String, Object> mapTrade = jsonStr2ObjMap.getStringObjectMap(s);
@@ -51,12 +42,6 @@ public class Json2Trade03Converter implements Converter<String, Trades> {
                 oTrade.setId_bank(3);
                 oTrade.setName_bank("Privat");
 
-                /*String s = "123.23";
-                BigDecimal bigDecimal = BigDecimal.valueOf(Double.parseDouble(s));
-                oTrade.setRateBuy(new BigDecimal((String) mapTrade.get("buy")));
-                oTrade.setRateBuy(Double.parseDouble((String) mapTrade.get("buy")));
-                oTrade.setRateSell(Double.parseDouble((String) mapTrade.get("sale")));
-                */
                 oTrade.setRateBuy(new BigDecimal((String) mapTrade.get("buy")));
                 oTrade.setRateSell(new BigDecimal((String) mapTrade.get("sale")));
 

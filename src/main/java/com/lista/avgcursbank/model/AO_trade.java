@@ -125,14 +125,14 @@ public class AO_trade {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AO_trade ao_trade = (AO_trade) o;
-        return id == ao_trade.id &&
-                id_bank == ao_trade.id_bank &&
-                id_currency == ao_trade.id_currency &&
-                rateBuy == ao_trade.rateBuy &&
-                rateSell == ao_trade.rateSell &&
-                Objects.equals(date_trade, ao_trade.date_trade) &&
-                Objects.equals(name_bank, ao_trade.name_bank) &&
-                Objects.equals(name_currency, ao_trade.name_currency);
+        return id == ao_trade.id
+                && id_bank == ao_trade.id_bank
+                && id_currency == ao_trade.id_currency
+                && rateBuy == ao_trade.rateBuy
+                && rateSell == ao_trade.rateSell
+                && Objects.equals(date_trade, ao_trade.date_trade)
+                && Objects.equals(name_bank, ao_trade.name_bank)
+                && Objects.equals(name_currency, ao_trade.name_currency);
     }
 
     @Override
@@ -142,15 +142,15 @@ public class AO_trade {
 
     @Override
     public String toString() {
-        return "AO_trade{" +
-                "id=" + id +
-                ", date_trade=" + date_trade +
-                ", id_bank=" + id_bank +
-                ", name_bank='" + name_bank + '\'' +
-                ", id_currency=" + id_currency +
-                ", name_currency='" + name_currency + '\'' +
-                ", rateBuy=" + rateBuy +
-                ", rateSell=" + rateSell +
-                '}';
+        return "AO_trade{"
+                + "id=" + id
+                + ", date_trade=" + date_trade
+                + ", id_bank=" + id_bank
+                + ", name_bank='" + name_bank + '\''
+                + ", id_currency=" + id_currency
+                + ", name_currency='" + name_currency + '\''
+                + ", rateBuy=" + rateBuy
+                + ", rateSell=" + rateSell
+                + '}';
     }
 }

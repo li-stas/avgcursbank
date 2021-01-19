@@ -30,8 +30,8 @@ public class TradeAvgPeriod {
         this.em = em;
     }
 
-    public Trades eval(String cDt1, String cDt2 ) {
-        String cStatus ="";
+    public Trades eval(String cDt1, String cDt2) {
+        String cStatus = "";
         Trades oTrades = new Trades(SUCCESS_STATUS, CODE_SUCCESS); // список курсов банка
         //DateTimeFormatter dateFormatter = DateTimeFormatter.BASIC_ISO_DATE; '20111203'
         DateTimeFormatter dateFormatter = DateTimeFormatter.ISO_LOCAL_DATE; //'2011-12-03'

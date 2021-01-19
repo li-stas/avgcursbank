@@ -50,9 +50,9 @@ public class BankLookupServiceImp implements BankLookupService { //implements Si
     private final Json2Trade02Converter json2Trade02Converter;
     private final Json2Trade03Converter json2Trade03Converter;
 
-    public BankLookupServiceImp(RestTemplateBuilder restTemplateBuilder, ConversionService conversionService
-            , Json2Trade01Converter json2Trade01Converter, Json2Trade02Converter json2Trade02Converter
-            , Json2Trade03Converter json2Trade03Converter) {
+    public BankLookupServiceImp(RestTemplateBuilder restTemplateBuilder, ConversionService conversionService,
+            Json2Trade01Converter json2Trade01Converter, Json2Trade02Converter json2Trade02Converter,
+            Json2Trade03Converter json2Trade03Converter) {
         this.restTemplate = restTemplateBuilder.build();
         this.conversionService = conversionService;
         this.json2Trade01Converter = json2Trade01Converter;
@@ -80,15 +80,15 @@ public class BankLookupServiceImp implements BankLookupService { //implements Si
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url);
 
         // Add query parameter
-        if (cApiKey.length() !=0 ) {
+        if (cApiKey.length() != 0) {
             builder.queryParam("/apikey", cApiKey);
         }
-        if (cSeekId.length() !=0 ) {
+        if (cSeekId.length() != 0) {
             builder.queryParam(cUrlTypeSeek, cSeekId);
         }
 
         url = builder.buildAndExpand(urlParams).toUri().toString();
-        log.info("  Looking up URL " +  url.replace("a625f1bf","ffffffff"));
+        log.info("  Looking up URL " + url.replace("a625f1bf", "ffffffff"));
 
         if (nId_Bank != 2) {
             cTrade = restTemplate.getForObject(url, String.class);
@@ -102,7 +102,7 @@ public class BankLookupServiceImp implements BankLookupService { //implements Si
 
     private Trades getPage(int nId_Bank, String cTrade) {
         Trades oTrade = new Trades(ERROR_STATUS + " " + cTrade, AUTH_FAILURE);
-        if (!(cTrade == null || cTrade.contains("Error\":"))  ) {
+        if (!(cTrade == null || cTrade.contains("Error\":"))) {
             log.info("Call conversionService");
             switch (nId_Bank) {
                 case 1:

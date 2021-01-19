@@ -11,7 +11,7 @@ public class Trades {
     private static final transient String ERROR_STATUS = "error";
     private static final transient int AUTH_FAILURE = 102;
 
-    private List<AO_trade> trades ;
+    private List<AO_trade> trades;
     private String status;
     private int code;
 
@@ -33,8 +33,8 @@ public class Trades {
      * @return
      */
     public String[] cTrade2aTrade(String cTrade) {
-        cTrade = cTrade.replace("[","");
-        cTrade = cTrade.replace("]",",");
+        cTrade = cTrade.replace("[", "");
+        cTrade = cTrade.replace("]", ",");
         String[] aTTrade = cTrade.split("},");
         for (int i = 0; i < aTTrade.length; i++) {
             aTTrade[i] += "}";
@@ -78,9 +78,9 @@ public class Trades {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Trades trades = (Trades) o;
-        return code == trades.code &&
-                Objects.equals(trades, trades.trades) &&
-                Objects.equals(status, trades.status);
+        return code == trades.code
+                && Objects.equals(trades, trades.trades)
+                && Objects.equals(status, trades.status);
     }
 
     @Override
@@ -90,10 +90,10 @@ public class Trades {
 
     @Override
     public String toString() {
-        return "TradeBank{" +
-                "trades=" + trades +
-                ", status='" + status + '\'' +
-                ", code=" + code +
-                '}';
+        return "TradeBank{"
+                + "trades=" + trades
+                + ", status='" + status + '\''
+                + ", code=" + code
+                + '}';
     }
 }

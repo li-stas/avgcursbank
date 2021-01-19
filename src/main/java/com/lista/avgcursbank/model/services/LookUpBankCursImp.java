@@ -39,7 +39,7 @@ public class LookUpBankCursImp implements LookUpBankCurs {
             int timeOut = waitIsDone(result, config);
             if (timeOut > 0) {
                 log.info("  // запись в экзепляр класса время чтения, с "
-                        + ((config.getTimeOutForSingleRequests() * 1000) - timeOut)/1000 );
+                        + ((config.getTimeOutForSingleRequests() * 1000) - timeOut) / 1000 );
                 oTrade01 = result.get();
             } else {
                 log.info("Время ожидания превышено timeOutForSingleRequests, с" + config.getTimeOutForSingleRequests() );
