@@ -8,6 +8,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -29,13 +30,6 @@ public class Json2Trade01Converter implements Converter<String, Trades> {
         Trades oTrades = new Trades(); // список курсов банка
         String[] aTTrade = oTrades.cTrade2aTrade(cTrade);
 
-        /*cTrade = cTrade.replace("[","");
-        cTrade = cTrade.replace("]",",");
-        String[] aTTrade = cTrade.split("},");
-        for (int i = 0; i < aTTrade.length; i++) {
-            aTTrade[i] += "}";
-        }*/
-
         int j = 0; // для быстрого вход после поиска данных
 
         for (String s : aTTrade) {
@@ -49,8 +43,10 @@ public class Json2Trade01Converter implements Converter<String, Trades> {
                 oTrade.setId_bank(1);
                 oTrade.setName_bank("MonoBank");
 
-                oTrade.setRateBuy(BigDecimal.valueOf((Double) mapTrade.get("rateBuy")));
-                oTrade.setRateSell(BigDecimal.valueOf((Double) mapTrade.get("rateSell")));
+                oTrade.setRateBuy(BigDecimal.valueOf(((Number) mapTrade.get("rateBuy")).doubleValue()));
+                oTrade.setRateBuy(BigDecimal.valueOf(((Number) mapTrade.get("rateSell")).doubleValue()));
+                /*oTrade.setRateSell(BigDecimal.valueOf((Double) mapTrade.get("rateBuy")));
+                oTrade.setRateSell(BigDecimal.valueOf((Double) mapTrade.get("rateSell")));*/
 
                 switch ((Integer) mapTrade.get("currencyCodeA")) {
                     case 840: //"USD":
@@ -96,5 +92,24 @@ public class Json2Trade01Converter implements Converter<String, Trades> {
         }
         return mapTrade;
     }*/
+
+    private  BigDecimal getBigDecimal( Object value ) {
+        BigDecimal ret = null;
+        if( value != null ) {
+            if( value instanceof BigDecimal ) {
+                ret = (BigDecimal) value;
+            } else if( value instanceof String ) {
+                ret = new BigDecimal( (String) value );
+            } else if( value instanceof BigInteger ) {
+                ret = new BigDecimal( (BigInteger) value );
+            } else if( value instanceof Number ) {
+                //ret = new BigDecimal( ((Number)value).doubleValue() );
+                ret = BigDecimal.valueOf(((Number) value).doubleValue());
+            } else {
+                throw new ClassCastException("Not possible to coerce ["+value+"] from class "+value.getClass()+" into a BigDecimal.");
+            }
+        }
+        return ret;
+    }
 }
 
