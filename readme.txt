@@ -21,12 +21,14 @@ readme.txt
 https://api.monobank.ua/docs/
 https://minfin.com.ua/ua/developers/api/
 https://api.privatbank.ua/#p24/exchange
-Для каждого из провайдеров реализовать общий интерфейси
+Для каждого из провайдеров реализовать общий интерфейси                    
 отдельные реализации
 
 2) Cron job - для реализации синхронизации данных с apiпровайдеров.
 3) Java/Kotlin, Tomcat, Spring Boot, Hibernate, PostgresQL; Git;
+http://localhost:8888/actuator/health  - test site
 4) Запросы должны быть задокументированы с использованием Swagger.
 (http://localhost:8888/swagger-ui.html#/)
 
 5) в качестве сборщика проектов использовать Gradle (использовалось Maven)
+
